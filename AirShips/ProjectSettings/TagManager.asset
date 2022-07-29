@@ -8,6 +8,7 @@ TagManager:
   - Pickup
   - DoorEnter
   - Platform
+  - Socket
   layers:
   - Default
   - TransparentFX

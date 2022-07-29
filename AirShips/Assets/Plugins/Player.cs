@@ -18,13 +18,13 @@ public class Player : MonoBehaviour
 	public GameObject HeldItem;
 	//position of held object
 	public GameObject HandPos;
-	
+	/*
 	[System.Serializable]
 	public class Item
 	{
 		public int ID = -1;
 		public int amount = 0;
-	}
+	}*/
 	//[ContextMenu ("additem")]
 	//adds an item with db id to inventory
 	public void AddItem(int adb)
@@ -125,5 +125,28 @@ public class Player : MonoBehaviour
 			HeldItem = Instantiate(idb.ItemDB[inventory[vSelected].ID].Carry, HandPos.transform.position, HandPos.transform.rotation) as GameObject;
 			HeldItem.transform.parent = HandPos.transform;
 		}
+	}
+	//use 1 item off the stack or use up an item
+	public void Use()
+	{
+		//Destroy the held item
+		if(vSelected == -1)
+		{
+			if(HeldItem != null)
+			{
+				Destroy(HeldItem);
+			}
+		}
+		//remove one off the stack
+	if(inventory[vSelected].amount >=2)
+		{
+			inventory[vSelected].amount--;
+		}
+		else
+		{
+			inventory.RemoveAt(vSelected); 
+		}
+		
+		
 	}
 }
