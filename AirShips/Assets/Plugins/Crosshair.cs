@@ -7,6 +7,8 @@ public class Crosshair : MonoBehaviour
 	public string reticleName = "Default";
 	public Texture2D[] reticleTexture;
 	public string[] tags = {"Default Reticle", "Enemy", "Pickup", "DoorEnter"};
+	//16-34 for the circle reticle
+	//16-50 for the crosshair
 	public float minSize = 32;
 	public float maxSize = 96;
 	public float maxDistance = 100;
