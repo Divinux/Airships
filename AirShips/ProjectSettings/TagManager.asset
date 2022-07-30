@@ -9,6 +9,10 @@ TagManager:
   - DoorEnter
   - Platform
   - Socket
+  - Root
+  - Partsholder
+  - WorldPartsHolder
+  - Clockcarry
   layers:
   - Default
   - TransparentFX

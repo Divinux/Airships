@@ -6,14 +6,14 @@ using UnityEngine;
 
 public class JSONLoader : MonoBehaviour
 {
-		public GameObject player;
+	public GameObject player;
 	public Player ps;
     // Create a field for the save file.
     string saveFile;
-
+	
     // Create a GameData field.
     public GameData gameData = new GameData();
-
+	
     void Awake()
     {
         // Update the path once the persistent path exists.
@@ -22,7 +22,7 @@ public class JSONLoader : MonoBehaviour
         //saveFile =  "gamedata.json";
 		player = GameObject.FindWithTag("Player");
 		ps = player.GetComponent<Player>();
-    }
+	}
 	[ContextMenu ("readfile")]
     public void readFile()
     {
@@ -31,30 +31,30 @@ public class JSONLoader : MonoBehaviour
         {
             // Read the entire file and save its contents.
             string fileContents = File.ReadAllText(saveFile);
-
+			
             // Deserialize the JSON data 
             //  into a pattern matching the GameData class.
             gameData = JsonUtility.FromJson<GameData>(fileContents);
-        }
-    }
-[ContextMenu ("writefile")]
+		}
+	}
+	[ContextMenu ("writefile")]
     public void writeFile()
     {
         // Serialize the object into JSON and save string.
         string jsonString = JsonUtility.ToJson(gameData);
-
+		
         // Write JSON to file.
         File.WriteAllText(saveFile, jsonString);
-    }
+	}
 	[ContextMenu ("getplayerdatafromgame")]
 	public void getData()
     {
-      gameData.playerinventory  = new List<Item>(ps.inventory);
-    }
+		gameData.playerinventory  = new List<Item>(ps.inventory);
+	}
 	[ContextMenu ("pushplayerdatatogame")]
 	public void pushData()
     {
         ps.inventory  = new List<Item>(gameData.playerinventory);
 		gameData.playerinventory  = new List<Item>();
-    }
+	}
 }

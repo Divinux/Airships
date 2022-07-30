@@ -15,6 +15,7 @@ public class Crosshair : MonoBehaviour
 	public bool  visible = true;
 
 	private RaycastHit hit;
+	private RaycastHit[] hits;
 	private Rect rectangle;
 	private Texture2D currentTexture;
 	private int screenHeight;
@@ -43,6 +44,27 @@ public class Crosshair : MonoBehaviour
 	void  LateUpdate()
 	{
 		
+		
+			if(Input.GetButtonUp("Use"))
+			{
+				hits = Physics.RaycastAll(Camera.main.transform.position, Camera.main.transform.forward, maxDistance);
+				for (int i = 0; i < hits.Length; i++)
+				{
+					RaycastHit hit = hits[i];
+					//Debug.Log(hit.collider.tag);
+					//check for tag 
+					if(hit.collider.tag == "Pickup" || hit.collider.tag == "DoorEnter")
+					{
+						hit.collider.SendMessageUpwards("Trigger", SendMessageOptions.DontRequireReceiver);
+					}
+           
+				}
+			
+			}
+		
+		
+		
+		///////
 		screenWidth = Screen.width;
 		screenHeight = Screen.height;
 		//Checks center of screen for raycast.
@@ -88,15 +110,18 @@ public class Crosshair : MonoBehaviour
 			if(distCache < distPickup)
 			{
 				//check for input
-			if(Input.GetButtonUp("Use"))
-			{
-				//Debug.Log(hit.collider.tag);
-				//check for tag 
-				if(hit.collider.tag == "Pickup" || hit.collider.tag == "DoorEnter")
+				//this is the old input check with raycast instead of raycastall
+				/*
+				if(Input.GetButtonUp("Use"))
 				{
-					hit.collider.SendMessageUpwards("Trigger", SendMessageOptions.DontRequireReceiver);
+					//Debug.Log(hit.collider.tag);
+					//check for tag 
+					if(hit.collider.tag == "Pickup" || hit.collider.tag == "DoorEnter")
+					{
+						hit.collider.SendMessageUpwards("Trigger", SendMessageOptions.DontRequireReceiver);
+					}
 				}
-			}
+				*/
 			}
 			else
 			{

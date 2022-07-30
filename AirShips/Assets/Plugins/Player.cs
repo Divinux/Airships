@@ -4,7 +4,7 @@ using System.Collections.Generic;
 //player inventory
 public class Player : MonoBehaviour 
 {
-
+	
 	
 	//player inventory
 	public List<Item> inventory = new List<Item>();
@@ -19,9 +19,9 @@ public class Player : MonoBehaviour
 	//position of held object
 	public GameObject HandPos;
 	/*
-	[System.Serializable]
-	public class Item
-	{
+		[System.Serializable]
+		public class Item
+		{
 		public int ID = -1;
 		public int amount = 0;
 	}*/
@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
 			}
 		}
 		//remove one off the stack
-	if(inventory[vSelected].amount >=2)
+		if(inventory[vSelected].amount >=2)
 		{
 			inventory[vSelected].amount--;
 		}
