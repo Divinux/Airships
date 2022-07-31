@@ -14,7 +14,7 @@ public class xkcdColorReader : MonoBehaviour
     //vvvvvv USED FOR TESTING FEEL FREE TO DELETE
     void Start()
     {
-        ReadFromFile();
+        //ReadFromFile();
     }
     void Update()
     {
@@ -25,14 +25,7 @@ public class xkcdColorReader : MonoBehaviour
     }
     //^^^^^^ USED FOR TESTING FEEL FREE TO DELETE
  
-    //color class, contains name string, hex color string, and unity color object
-    [System.Serializable]
-    public class vColor
-    {
-        public string sName;
-        public string sValue;
-        public Color cColor;
-    }
+
     //loads the text file into a list that you can keep on a component. 
     //hence the contextmenu attribute, just do it once and delete the .txt file.
     //or keep it automatic. I'm not your boss.
@@ -44,6 +37,16 @@ public class xkcdColorReader : MonoBehaviour
         StreamReader sw = File.OpenText("Assets/xkcdColors.txt");
         file = sw.ReadToEnd().Split("\n"[0]).ToList();
         sw.Close();
+    }
+	 //generates a vColor object fora random value
+    [ContextMenu ("Get Random Color")]
+	public void GenerateRandomColor() 
+    {
+		int a = UnityEngine.Random.Range(0, file.Count);
+        string[] t = file[a].Split("\t"[0]);
+        color.sName = t[0];
+        color.sValue = t[1];
+        color.cColor = GetColor(t[1]);
     }
     //generates a vColor object for a given index
     public void GenerateColor (int a) 

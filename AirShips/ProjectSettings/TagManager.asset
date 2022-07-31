@@ -13,6 +13,7 @@ TagManager:
   - Partsholder
   - WorldPartsHolder
   - Clockcarry
+  - GameManager
   layers:
   - Default
   - TransparentFX
