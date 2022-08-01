@@ -52,36 +52,38 @@ public class PlaceItem : MonoBehaviour
 					
 					
 					//find the root of the given part
-					Debug.Log(FindParentWithTag(hit.transform.gameObject, "Root"));
+					//Debug.Log(FindParentWithTag(hit.transform.gameObject, "Root"));
 					GameObject shippart = FindParentWithTag(hit.transform.gameObject, "Root");
 					
 					if(oldtag == "Clockcarry")
 					{
-					//temp store for parent object search
-					Transform targetparent = null;
-					foreach (Transform child  in newpart.transform)
-					{
-						Debug.Log(child.tag);
-						if(child.tag == "Partsholder")
+						//temp store for parent object search
+						Transform targetparent = null;
+						foreach (Transform child  in newpart.transform)
 						{
-							
-							targetparent = child;
+							//Debug.Log(child.tag);
+							if(child.tag == "Partsholder")
+							{
+								
+								targetparent = child;
+							}
 						}
-					}
-					if(targetparent!=null)
-					{
-						//parent that root to the placed item
-						shippart.transform.parent = targetparent;
+						if(targetparent!=null)
+						{
+							//parent that root to the placed item
+							shippart.transform.parent = targetparent;
+						}
+						else
+						{
+							shippart.transform.parent = newpart.transform;
+						}
 					}
 					else
 					{
-						shippart.transform.parent = newpart.transform;
+						//newpart.transform.parent = hit.transform;
+						newpart.transform.parent = shippart.transform;
+						
 					}
-					}
-					else
-					{
-						newpart.transform.parent = hit.transform;
-						}
 				}
 			}
 			

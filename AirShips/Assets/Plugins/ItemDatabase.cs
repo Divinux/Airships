@@ -17,6 +17,8 @@ public class ItemDatabase : MonoBehaviour
 		public GameObject Drop;
 		//the object you would hold in your hand
 		public GameObject Carry;
+		//the object you would place after holding
+		public GameObject Place;
 		//base price of the object
 		public int Price;
 	}	

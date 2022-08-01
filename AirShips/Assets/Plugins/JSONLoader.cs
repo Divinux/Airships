@@ -8,6 +8,8 @@ public class JSONLoader : MonoBehaviour
 {
 	public GameObject player;
 	public Player ps;
+	public GameObject foundClock;
+	
     // Create a field for the save file.
     string saveFile;
 	
@@ -49,6 +51,14 @@ public class JSONLoader : MonoBehaviour
 	[ContextMenu ("getplayerdatafromgame")]
 	public void getData()
     {
+		foundClock = GameObject.Find("ClockPlace(Clone)");
+		
+		if(foundClock!=null)
+		{
+	 
+		gameData.ship = new List<ShipPart>();
+			Traverse(foundClock);
+		}
 		gameData.playerinventory  = new List<Item>(ps.inventory);
 	}
 	[ContextMenu ("pushplayerdatatogame")]
@@ -57,4 +67,47 @@ public class JSONLoader : MonoBehaviour
         ps.inventory  = new List<Item>(gameData.playerinventory);
 		gameData.playerinventory  = new List<Item>();
 	}
+	
+	void Traverse(GameObject obj)
+	{
+		Debug.Log (obj.name);
+		ShipPart sp = new ShipPart();
+		
+		PickupItem pu = null;
+		pu = obj.GetComponent<PickupItem>();
+		if(pu)
+		{	
+		sp.ID = pu.ID;
+		}
+		
+		 // Get the Renderer component from the new cube
+       var cRenderer = obj.GetComponent<SetRandomColor>();
+	   if(cRenderer)
+	   {
+       // Call SetColor using the shader property name "_Color" and setting the color to red
+		sp.Color =cRenderer.vCol;
+		sp.Name = obj.name;
+	   }
+	   sp.Position = obj.transform.position;
+	   sp.Rotation = obj.transform.rotation;
+	   Debug.Log("the Name is" + sp.Name + sp.ID);
+	   if(sp.Name == null && sp.ID == -1)
+	   {
+		   Debug.Log("Can be ignored");
+	   }
+	   else
+	   {
+		   
+	   gameData.ship.Add(sp);
+		   }
+	   
+		foreach (Transform child in obj.transform) {
+			Traverse (child.gameObject);
+		}
+		
+	}
+	
+	
+		
+	
 }
