@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ItemDatabase : MonoBehaviour 
 {
 	public List<Item> ItemDB = new List<Item>();
-
+	
 	[System.Serializable]
 	public struct Item 
 	{

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PickupItem : MonoBehaviour 
 {
-
+	
 	public int ID;
 	
 	public Player pls;
@@ -28,27 +28,29 @@ public class PickupItem : MonoBehaviour
         if (pl != null)
         {
             p.transform.parent = null;
-        }
+		}
 		
-				//temp store for parent object search
-					Transform targetparent = null;
-					foreach (Transform child  in transform)
-					{
-						Debug.Log(child.tag);
-						if(child.tag == "Partsholder")
-						{
-					
-							targetparent = child;
-						}
-					}
-					if(targetparent!=null)
-					{
-						foreach (Transform child  in targetparent)
-						{
-						GameObject wp = GameObject.FindWithTag("WorldPartsHolder");
-							child.parent = wp.transform;
-							}
-					}
+		//
+		//temp store for parent object search
+		Transform targetparent = null;
+		
+		//look through all children and find the parts holder
+		foreach (Transform child  in transform)
+		{
+			if(child.tag == "Partsholder")
+			{
+				targetparent = child;
+			}
+		}
+		//if a parts holder was found, parent all children to the world parts holder
+		if(targetparent!=null)
+		{
+			foreach (Transform child  in targetparent)
+			{
+				GameObject wp = GameObject.FindWithTag("WorldPartsHolder");
+				child.parent = wp.transform;
+			}
+		}
 		
 		
 		transform.parent = null;

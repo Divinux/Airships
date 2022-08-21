@@ -88,7 +88,6 @@ public class JSONLoader : MonoBehaviour
 			else if(s.ID != -1)
 			{
 				goAll = Instantiate(idb.ItemDB[s.ID].Place, s.Position, s.Rotation);
-				Debug.Log("Instantiated!" + s.Name);
 				if(foundClock == null)
 				{
 					foundClock = GameObject.Find("ClockPlace(Clone)");
@@ -99,11 +98,9 @@ public class JSONLoader : MonoBehaviour
 			}
 			if(goAll != null)
 			{
-				Debug.Log("," + s.Name);
 				if(s.Name != "")
 				{
 					//color the new part
-					Debug.Log("coloring part: " + s.Name);
 					
 					partToColor = getChildGameObject(goAll, s.Name);
 					//partToColor = goAll.transform;
@@ -167,10 +164,8 @@ public class JSONLoader : MonoBehaviour
 		}
 		sp.Position = obj.transform.position;
 		sp.Rotation = obj.transform.rotation;
-		Debug.Log("the Name is" + sp.Name + sp.ID);
 		if(sp.Name == null && sp.ID == -1)
 		{
-			Debug.Log("Can be ignored");
 		}
 		else
 		{
