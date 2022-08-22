@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 // Add System.IO to work with files!
 using System.IO;
-
+		
 
 [System.Serializable]
 public class GameData
@@ -20,7 +20,9 @@ public class GameData
 	
 	//copy of the player inventory
 	public List<Item> playerinventory = new List<Item>();
+	//list of ship parts to be saved
 	public List<ShipPart> ship = new List<ShipPart>();
+	
 }
 [System.Serializable]
 public class ShipPart
@@ -30,4 +32,6 @@ public class ShipPart
 	public Quaternion Rotation;
 	public int ID = -1;
 	public vColor Color;
+	public string UID;
+	public string PUID;
 }

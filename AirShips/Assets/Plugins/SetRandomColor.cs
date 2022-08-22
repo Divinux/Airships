@@ -11,6 +11,15 @@ public class SetRandomColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+	Invoke("clr", 1);
+	
+		
+	}
+	public void clr()
+	{
+		if(vCol.sName == "")
+	{
+		Debug.Log("No Name, generating new colro");
 		man = GameObject.FindWithTag("GameManager");
 		xk = man.GetComponent<xkcdColorReader>();
 		xk.GenerateRandomColor();
@@ -24,7 +33,13 @@ public class SetRandomColor : MonoBehaviour
 		
 		// Call SetColor using the shader property name "_Color" and setting the color to red
 		cRenderer.material.SetColor("_Color", vCol.cColor);
-	}
+		}
+		else
+		{
+			Debug.Log("Color already set! " + vCol.sName);
+			}
+		
+		}
 	
    
 }

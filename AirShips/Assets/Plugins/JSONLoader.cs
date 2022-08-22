@@ -108,6 +108,9 @@ public class JSONLoader : MonoBehaviour
 					var cRenderer = partToColor.gameObject.GetComponent<Renderer>();
 					// Call SetColor using the shader property name "_Color" and setting the color to red
 					cRenderer.material.SetColor("_Color", s.Color.cColor);
+					
+					SetRandomColor src = partToColor.gameObject.GetComponent<SetRandomColor>();
+					src.vCol = s.Color;
 				}
 			}
 		}
@@ -146,14 +149,39 @@ public class JSONLoader : MonoBehaviour
 	{
 		Debug.Log (obj.name);
 		ShipPart sp = new ShipPart();
-		
+		//see if the part has an ID attached to it = is a game object that has a prefab and can be instantiated
 		PickupItem pu = null;
 		pu = obj.GetComponent<PickupItem>();
 		if(pu)
 		{	
+			Debug.Log("Pickupitem found");
 			sp.ID = pu.ID;
 		}
-		
+		//see if the object has a uid and is therefore important for hierarchy reinstating
+		UIDs uid = null;
+		uid = obj.GetComponent<UIDs>();
+		if(uid)
+		{	
+			Debug.Log("UID element found");
+			uid.GenerateUID();
+			sp.UID = uid.UID;
+		}
+		//see if the objects parent has a uid 
+		UIDs puid = null;
+		if(obj.transform.parent != null)
+		{
+			Debug.Log("Parnet found");
+			puid = obj.transform.parent.gameObject.GetComponent<UIDs>();
+			if(puid)
+			{	
+				Debug.Log("Parnet uid obj found");
+				puid.GenerateUID();
+				sp.PUID = puid.UID;
+				if(uid){
+					uid.PUID = puid.UID;
+				}
+			}
+		}
 		// Get the Renderer component from the new cube
 		var cRenderer = obj.GetComponent<SetRandomColor>();
 		if(cRenderer)
@@ -164,22 +192,34 @@ public class JSONLoader : MonoBehaviour
 		}
 		sp.Position = obj.transform.position;
 		sp.Rotation = obj.transform.rotation;
-		if(sp.Name == null && sp.ID == -1)
-		{
-		}
-		else
-		{
+		Debug.Log("the Name is" + sp.Name + sp.ID);
+		
+		
+		//this saves all parts
+		gameData.ship.Add(sp);
+		
+		
+		//this solution saves only named prefabs and nothing else
+		/*
+			if(sp.Name == null && sp.ID == -1)
+			{
+			Debug.Log("Can be ignored");
+			}
+			else
+			{
 			
 			gameData.ship.Add(sp);
+			}
+		*/
+	
+	
+		foreach (Transform child in obj.transform) 
+		{
+		Traverse (child.gameObject);
 		}
-		
-		foreach (Transform child in obj.transform) {
-			Traverse (child.gameObject);
-		}
-		
 	}
-	
-	
-	
-	
 }
+
+
+
+

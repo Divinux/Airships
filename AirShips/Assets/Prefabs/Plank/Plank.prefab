@@ -285,6 +285,36 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &2714103186178435383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609968822968175254}
+  m_Layer: 0
+  m_Name: Shipparts
+  m_TagString: Partsholder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &609968822968175254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714103186178435383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4212561184736462073}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3190727485833844835
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,6 +895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4212561184736462073}
   - component: {fileID: -4496488880190324438}
+  - component: {fileID: 1936646402401145290}
   m_Layer: 0
   m_Name: Plank
   m_TagString: Root
@@ -887,6 +918,7 @@ Transform:
   - {fileID: 4212561185533439818}
   - {fileID: 4212561186181367924}
   - {fileID: 5801213567352545652}
+  - {fileID: 609968822968175254}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -904,6 +936,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 2
   pls: {fileID: 0}
+--- !u!114 &1936646402401145290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212561184736462074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f008ee71154214ea2dd5891aa932e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UID: 
+  PUID: 
 --- !u!1 &4212561185533439819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1263,7 @@ GameObject:
   - component: {fileID: 4189143577850428030}
   - component: {fileID: 4261001828932806953}
   - component: {fileID: 1722858722795221685}
+  - component: {fileID: 1341285313}
   m_Layer: 0
   m_Name: Planks.1
   m_TagString: Untagged
@@ -1287,6 +1334,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1341285313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498113991360961020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bdb9ecb1355ef4380c32301b4c758c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cColor: {r: 0, g: 0, b: 0, a: 0}
+  vCol:
+    sName: 
+    sValue: 
+    cColor: {r: 0, g: 0, b: 0, a: 0}
+  man: {fileID: 0}
+  xk: {fileID: 0}
 --- !u!1 &5782726479101641225
 GameObject:
   m_ObjectHideFlags: 0
