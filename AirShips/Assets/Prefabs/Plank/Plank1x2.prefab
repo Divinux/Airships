@@ -119,6 +119,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6607513192414267837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8769450831003746808}
+  m_Layer: 0
+  m_Name: Shipparts
+  m_TagString: Partsholder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8769450831003746808
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607513192414267837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7762986647541864549}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7762986646191223767
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7762986647541864549}
+  - component: {fileID: 2736735787909402384}
   m_Layer: 0
   m_Name: Plank1x2
   m_TagString: Root
@@ -659,9 +690,24 @@ Transform:
   - {fileID: 7762986646191223766}
   - {fileID: 7762986646839350504}
   - {fileID: 3356706915378001306}
+  - {fileID: 8769450831003746808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2736735787909402384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7762986647541864550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f008ee71154214ea2dd5891aa932e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UID: 
+  PUID: 
 --- !u!1 &7762986648010369952
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,13 +901,13 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: df835206d2eb7f8449356f7335e83ff9, type: 3}
   m_PrefabInstance: {fileID: 2963318367388078705}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &3356706915378001306 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df835206d2eb7f8449356f7335e83ff9, type: 3}
-  m_PrefabInstance: {fileID: 2963318367388078705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2710980556998409248 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 900865262074457681, guid: df835206d2eb7f8449356f7335e83ff9, type: 3}
+  m_PrefabInstance: {fileID: 2963318367388078705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3356706915378001306 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df835206d2eb7f8449356f7335e83ff9, type: 3}
   m_PrefabInstance: {fileID: 2963318367388078705}
   m_PrefabAsset: {fileID: 0}

@@ -44,7 +44,7 @@ public class PlaceItem : MonoBehaviour
 				{
 					//Instantiate the buildable 
 					GameObject newpart = Instantiate(prefab, hit.transform.position, hit.transform.rotation);
-					//Destroy the player held item
+					//Destroy the player held item, but save it's tag
 					string oldtag = gameObject.tag;
 					Destroy(gameObject);
 					//Use up one inventory of the item
@@ -54,7 +54,7 @@ public class PlaceItem : MonoBehaviour
 					//find the root of the given part
 					//Debug.Log(FindParentWithTag(hit.transform.gameObject, "Root"));
 					GameObject shippart = FindParentWithTag(hit.transform.gameObject, "Root");
-					
+					//if the held item was a clock, put it as root
 					if(oldtag == "Clockcarry")
 					{
 						//temp store for parent object search
